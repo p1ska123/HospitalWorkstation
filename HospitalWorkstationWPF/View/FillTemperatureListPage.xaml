@@ -1,0 +1,231 @@
+﻿<Page x:Class="HospitalWorkstationWPF.View.FillTemperatureListPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:HospitalWorkstationWPF.View"
+      mc:Ignorable="d" 
+      d:DesignHeight="500" d:DesignWidth="900"
+      Title="FillTemperatureListPage">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Border BorderBrush="#38ADDF" BorderThickness="0 0 0 3">
+            <StackPanel>
+                <TextBlock Text="Заполнить температурный лист" Style="{StaticResource MainText}" Foreground="White" Margin="10 10 10 5"/>
+                <TextBlock Style="{StaticResource MainText}" VerticalAlignment="Center" x:Name="NameTextBlock" Foreground="White"  Margin="10 5 5 5"/>
+                <TextBlock Style="{StaticResource ArticleText}"  VerticalAlignment="Center" x:Name="ArriveDateTextBlock" Foreground="White" Margin="10 0 0 10"/>
+            </StackPanel>
+        </Border>
+        <Grid Grid.Row="1" x:Name="MorningData">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <StackPanel>
+                <StackPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 10 0 0">
+                    <TextBlock Style="{StaticResource MainText}" x:Name="ObservationDateTextBlock1" Foreground="White" HorizontalAlignment="Center"/>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="10 5 10 5">
+                        <Button Content="Утро" Margin="10 0 10 0" Opacity="0.7" Click="SetMorningButton_Click" Style="{StaticResource Button}" Background="White" BorderBrush="#C7C7C7" Cursor="Hand" FontSize="12" Width="50" Height="20"/>
+                        <Button Content="Вечер" Margin="10 0 10 0" Click="SetEveningButton_Click" Style="{StaticResource Button}" Background="White" BorderBrush="#C7C7C7" Cursor="Hand" FontSize="12" Width="50" Height="20"/>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+            <Grid Grid.Row="1">
+                <Grid Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid VerticalAlignment="Center" Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.4*"/>
+                            <ColumnDefinition Width="0.6*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="Пульс, уд. /мин*:" TextAlignment="Right" Style="{StaticResource MainText}" Foreground="White" HorizontalAlignment="Right" Margin="5" VerticalAlignment="Center"/>
+                        <TextBox x:Name="TextBoxId1Morning" Width="200" Margin="5" Grid.Column="1" Style="{StaticResource TextBox}" Height="25" HorizontalAlignment="Left"/>
+                    </Grid>
+                    <Grid VerticalAlignment="Center" Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.4*"/>
+                            <ColumnDefinition Width="0.6*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="Артериальное давление*:" TextAlignment="Right" Style="{StaticResource MainText}" Foreground="White" HorizontalAlignment="Right" Margin="5" VerticalAlignment="Center"/>
+                        <TextBox Width="200" Margin="5" Grid.Column="1" Style="{StaticResource TextBox}" Height="25" HorizontalAlignment="Left"  x:Name="TextBoxId2Morning"/>
+                    </Grid>
+                    <Grid VerticalAlignment="Center" Grid.Row="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.4*"/>
+                            <ColumnDefinition Width="0.6*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="Температура, ℃*:" TextAlignment="Right" Style="{StaticResource MainText}" Foreground="White" HorizontalAlignment="Right" Margin="5" VerticalAlignment="Center"/>
+                        <TextBox Width="200" Margin="5" Grid.Column="1" Style="{StaticResource TextBox}" Height="25" HorizontalAlignment="Left"  x:Name="TextBoxId3Morning"/>
+                    </Grid>
+                    <Grid VerticalAlignment="Center" Grid.Row="3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.4*"/>
+                            <ColumnDefinition Width="0.6*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="Дыхание, вдох/мин*:" TextAlignment="Right" Style="{StaticResource MainText}" Foreground="White" HorizontalAlignment="Right" Margin="5" VerticalAlignment="Center"/>
+                        <TextBox Width="200" Margin="5" Grid.Column="1" Style="{StaticResource TextBox}" Height="25" HorizontalAlignment="Left" x:Name="TextBoxId4Morning"/>
+                    </Grid>
+                    <Grid VerticalAlignment="Center" Grid.Row="4">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.4*"/>
+                            <ColumnDefinition Width="0.6*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="Вес, кг*:" TextAlignment="Right" Style="{StaticResource MainText}" Foreground="White" HorizontalAlignment="Right" Margin="5" VerticalAlignment="Center"/>
+                        <TextBox Width="200" Margin="5" Grid.Column="1" Style="{StaticResource TextBox}" Height="25" HorizontalAlignment="Left" x:Name="TextBoxId5Morning"/>
+                    </Grid>
+                    <Grid VerticalAlignment="Center" Grid.Row="5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.4*"/>
+                            <ColumnDefinition Width="0.6*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="Выпито жидкости, мл*:" Style="{StaticResource MainText}" Foreground="White" HorizontalAlignment="Right" Margin="5" VerticalAlignment="Center"/>
+                        <TextBox Width="200" Margin="5" Grid.Column="1" Style="{StaticResource TextBox}" Height="25" HorizontalAlignment="Left" x:Name="TextBoxId6Morning"/>
+                    </Grid>
+                    <Grid VerticalAlignment="Center" Grid.Row="6">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.4*"/>
+                            <ColumnDefinition Width="0.6*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="Суточное количество мочи, мл*:" Style="{StaticResource MainText}" Foreground="White" HorizontalAlignment="Right" Margin="5" VerticalAlignment="Center"/>
+                        <TextBox Width="200" Margin="5" Grid.Column="1" Style="{StaticResource TextBox}" Height="25" HorizontalAlignment="Left" x:Name="TextBoxId7Morning"/>
+                    </Grid>
+                    <Grid VerticalAlignment="Center" Grid.Row="7">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.4*"/>
+                            <ColumnDefinition Width="0.6*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="Стул*:" Style="{StaticResource MainText}" Foreground="White" HorizontalAlignment="Right" Margin="5" VerticalAlignment="Center"/>
+                        <TextBox Width="200" Margin="5" Grid.Column="1" Style="{StaticResource TextBox}" Height="25" HorizontalAlignment="Left" x:Name="TextBoxId8Morning"/>
+                    </Grid>
+                    <Grid VerticalAlignment="Center" Grid.Row="8">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.4*"/>
+                            <ColumnDefinition Width="0.6*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="Ванна*:" Style="{StaticResource MainText}" Foreground="White" HorizontalAlignment="Right" Margin="5" VerticalAlignment="Center"/>
+                        <TextBox Width="200" Margin="5" Grid.Column="1" Style="{StaticResource TextBox}" Height="25" HorizontalAlignment="Left" x:Name="TextBoxId9Morning"/>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="1" x:Name="EveningData" Visibility="Collapsed">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <StackPanel>
+                <StackPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 10 0 0">
+                    <TextBlock Style="{StaticResource MainText}" x:Name="ObservationDateTextBlock2" Foreground="White" HorizontalAlignment="Center"/>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="10 5 10 5">
+                        <Button Content="Утро" Margin="10 0 10 0" Click="SetMorningButton_Click" Style="{StaticResource Button}" Background="White" BorderBrush="#C7C7C7" Cursor="Hand" FontSize="12" Width="50" Height="20"/>
+                        <Button Content="Вечер" Margin="10 0 10 0" Opacity="0.7" Click="SetEveningButton_Click" Style="{StaticResource Button}" Background="White" BorderBrush="#C7C7C7" Cursor="Hand" FontSize="12" Width="50" Height="20"/>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+            <Grid Grid.Row="1">
+                <Grid Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid VerticalAlignment="Center" Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.4*"/>
+                            <ColumnDefinition Width="0.6*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="Пульс, уд. /мин*:" TextAlignment="Right" Style="{StaticResource MainText}" Foreground="White" HorizontalAlignment="Right" Margin="5" VerticalAlignment="Center"/>
+                        <TextBox x:Name="TextBoxId1Evening" Width="200" Margin="5" Grid.Column="1" Style="{StaticResource TextBox}" Height="25" HorizontalAlignment="Left"/>
+                    </Grid>
+                    <Grid VerticalAlignment="Center" Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.4*"/>
+                            <ColumnDefinition Width="0.6*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="Артериальное давление*:" TextAlignment="Right" Style="{StaticResource MainText}" Foreground="White" HorizontalAlignment="Right" Margin="5" VerticalAlignment="Center"/>
+                        <TextBox Width="200" Margin="5" Grid.Column="1" Style="{StaticResource TextBox}" Height="25" HorizontalAlignment="Left"  x:Name="TextBoxId2Evening"/>
+                    </Grid>
+                    <Grid VerticalAlignment="Center" Grid.Row="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.4*"/>
+                            <ColumnDefinition Width="0.6*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="Температура, ℃*:" TextAlignment="Right" Style="{StaticResource MainText}" Foreground="White" HorizontalAlignment="Right" Margin="5" VerticalAlignment="Center"/>
+                        <TextBox Width="200" Margin="5" Grid.Column="1" Style="{StaticResource TextBox}" Height="25" HorizontalAlignment="Left"  x:Name="TextBoxId3Evening"/>
+                    </Grid>
+                    <Grid VerticalAlignment="Center" Grid.Row="3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.4*"/>
+                            <ColumnDefinition Width="0.6*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="Дыхание, вдох/мин*:" TextAlignment="Right" Style="{StaticResource MainText}" Foreground="White" HorizontalAlignment="Right" Margin="5" VerticalAlignment="Center"/>
+                        <TextBox Width="200" Margin="5" Grid.Column="1" Style="{StaticResource TextBox}" Height="25" HorizontalAlignment="Left" x:Name="TextBoxId4Evening"/>
+                    </Grid>
+                    <Grid VerticalAlignment="Center" Grid.Row="4">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.4*"/>
+                            <ColumnDefinition Width="0.6*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="Вес, кг*:" TextAlignment="Right" Style="{StaticResource MainText}" Foreground="White" HorizontalAlignment="Right" Margin="5" VerticalAlignment="Center"/>
+                        <TextBox Width="200" Margin="5" Grid.Column="1" Style="{StaticResource TextBox}" Height="25" HorizontalAlignment="Left" x:Name="TextBoxId5Evening"/>
+                    </Grid>
+                    <Grid VerticalAlignment="Center" Grid.Row="5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.4*"/>
+                            <ColumnDefinition Width="0.6*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="Выпито жидкости, мл*:" Style="{StaticResource MainText}" Foreground="White" HorizontalAlignment="Right" Margin="5" VerticalAlignment="Center"/>
+                        <TextBox Width="200" Margin="5" Grid.Column="1" Style="{StaticResource TextBox}" Height="25" HorizontalAlignment="Left" x:Name="TextBoxId6Evening"/>
+                    </Grid>
+                    <Grid VerticalAlignment="Center" Grid.Row="6">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.4*"/>
+                            <ColumnDefinition Width="0.6*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="Суточное количество мочи, мл*:" Style="{StaticResource MainText}" Foreground="White" HorizontalAlignment="Right" Margin="5" VerticalAlignment="Center"/>
+                        <TextBox Width="200" Margin="5" Grid.Column="1" Style="{StaticResource TextBox}" Height="25" HorizontalAlignment="Left" x:Name="TextBoxId7Evening"/>
+                    </Grid>
+                    <Grid VerticalAlignment="Center" Grid.Row="7">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.4*"/>
+                            <ColumnDefinition Width="0.6*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="Стул*:" Style="{StaticResource MainText}" Foreground="White" HorizontalAlignment="Right" Margin="5" VerticalAlignment="Center"/>
+                        <TextBox Width="200" Margin="5" Grid.Column="1" Style="{StaticResource TextBox}" Height="25" HorizontalAlignment="Left" x:Name="TextBoxId8Evening"/>
+                    </Grid>
+                    <Grid VerticalAlignment="Center" Grid.Row="8">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.4*"/>
+                            <ColumnDefinition Width="0.6*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="Ванна*:" Style="{StaticResource MainText}" Foreground="White" HorizontalAlignment="Right" Margin="5" VerticalAlignment="Center"/>
+                        <TextBox Width="200" Margin="5" Grid.Column="1" Style="{StaticResource TextBox}" Height="25" HorizontalAlignment="Left" x:Name="TextBoxId9Evening"/>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </Grid>
+        <Button Grid.Row="2" Content="Добавить данные" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="10" Click="AddDataButton_Click" Style="{StaticResource Button}" Background="White" Padding="5 2 5 2" BorderBrush="#C7C7C7" Cursor="Hand"/>
+    </Grid>
+</Page>

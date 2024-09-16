@@ -1,0 +1,51 @@
+﻿<ResourceDictionary
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:HospitalWorkstationWPF.Assets.Dictionaries">
+    <Style x:Key="MainText">
+        <Setter Property="TextElement.FontFamily" Value="../Fonts/#Montserrat"/>
+        <Setter Property="TextElement.FontSize" Value="15"/>
+        <Setter Property="TextElement.FontWeight" Value="Medium"/>
+    </Style>
+    <Style x:Key="TitleText">
+        <Setter Property="TextElement.FontFamily" Value="../Fonts/#Montserrat"/>
+        <Setter Property="TextElement.FontSize" Value="15"/>
+        <Setter Property="TextElement.FontWeight" Value="Bold"/>
+    </Style>
+    <Style x:Key="ArticleText">
+        <Setter Property="TextElement.FontFamily" Value="../Fonts/#Montserrat"/>
+        <Setter Property="TextElement.FontSize" Value="10"/>
+        <Setter Property="TextElement.FontWeight" Value="Regular"/>
+    </Style>
+
+    <Style x:Key="TextBox">
+        <Setter Property="TextElement.FontFamily" Value="../Fonts/#Montserrat"/>
+        <Setter Property="TextElement.FontSize" Value="15"/>
+        <Setter Property="TextElement.FontWeight" Value="Medium"/>
+        <Setter Property="TextBlock.VerticalAlignment" Value="Center"/>
+        <Setter Property="Block.BorderThickness" Value="2"/>
+        <Setter Property="Block.BorderBrush" Value="#C7C7C7"/>
+        <Style.Resources>
+            <Style TargetType="{x:Type Border}">
+                <Setter Property="CornerRadius" Value="3"/>
+            </Style>
+        </Style.Resources>
+    </Style>
+    <Style x:Key="Button">
+        <Setter Property="TextElement.FontFamily" Value="../Fonts/#Montserrat"/>
+        <Setter Property="TextElement.FontSize" Value="15"/>
+        <Setter Property="TextElement.FontWeight" Value="Medium"/>
+        <Setter Property="TextBlock.VerticalAlignment" Value="Center"/>
+        <Setter Property="Block.BorderThickness" Value="2"/>
+        <Setter Property="Block.BorderBrush" Value="#C7C7C7"/>
+        <Setter Property="Block.Background" Value="White"/>
+        <Setter Property="TextElement.Foreground" Value="#62D0FF"/>
+        <Style.Resources>
+            <Style TargetType="{x:Type Border}">
+                <Setter Property="CornerRadius" Value="3"/>
+            </Style>
+        </Style.Resources>
+    </Style>
+</ResourceDictionary>

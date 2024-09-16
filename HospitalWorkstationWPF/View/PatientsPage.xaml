@@ -1,0 +1,104 @@
+﻿<Page x:Class="HospitalWorkstationWPF.View.PatientsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:HospitalWorkstationWPF.View"
+      mc:Ignorable="d" 
+      d:DesignHeight="500" d:DesignWidth="900"
+      Title="PatientsPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Border BorderBrush="#38ADDF" BorderThickness="0 0 0 3">
+            <StackPanel>
+                <TextBlock Text="Пациенты больницы" Style="{StaticResource MainText}" Foreground="White" Margin="10 10 0 0"/>
+                <Grid Margin="5 10 0 10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <ComboBox x:Name="DepartmensComboBox" Margin="5" SelectionChanged="DepartmensComboBox_SelectionChanged" Height="25" FontFamily="../Assets/Fonts/#Montserrat" VerticalContentAlignment="Center"/>
+                    <ComboBox x:Name="WardsComboBox" Margin="5" SelectionChanged="WardsComboBox_SelectionChanged" Grid.Column="1" Height="25" FontFamily="../Assets/Fonts/#Montserrat" VerticalContentAlignment="Center"/>
+                    <ComboBox x:Name="WorekrsComboBox" Margin="5" Grid.Column="2" SelectionChanged="WorkersComboBox_SelectionChanged" Height="25" FontFamily="../Assets/Fonts/#Montserrat" VerticalContentAlignment="Center"/>
+                    <TextBox x:Name="SearchTextBox" Margin="5,0,5,0" TextChanged="SearchTextBox_TextChanged" Grid.Column="3" Style="{StaticResource TextBox}" Height="25">
+                        <TextBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="0"/>
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+                </Grid>
+            </StackPanel>
+        </Border>
+        <ListView Grid.Row="1" x:Name="PatientsListView" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Background="Transparent" BorderThickness="0" d:ItemsSource="{d:SampleData ItemCount=5}">
+            <ListBox.ItemContainerStyle>
+                <Style>
+                    <Setter Property="ListBoxItem.Margin" Value="-2 0 -2 -4"/>
+                    <Setter Property="ListBoxItem.Padding" Value="0"/>
+                </Style>
+            </ListBox.ItemContainerStyle>
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center"/>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Border BorderThickness="2" BorderBrush="#38ADDF" Width="450">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="200"/>
+                                <ColumnDefinition Width="200"/>
+                                <ColumnDefinition Width="50"/>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Margin="5">
+                                <TextBlock Text="{Binding RegistrationNumberString}" Style="{StaticResource ArticleText}" Foreground="White" FontWeight="Bold"/>
+                                <TextBlock Text="{Binding FIO}" Style="{StaticResource ArticleText}" Foreground="White" FontWeight="Bold"/>
+                                <TextBlock Text="{Binding AgePatient}" Style="{StaticResource ArticleText}" Foreground="White"/>
+                                <TextBlock Text="{Binding ArrivalDateString}" Style="{StaticResource ArticleText}" Foreground="White"/>
+                                <TextBlock Text="{Binding DiagnosisName}" Style="{StaticResource ArticleText}" Foreground="White"/>
+                                <TextBlock Text="{Binding HospitalWards.WorkerNameShort}" Style="{StaticResource ArticleText}" Foreground="White"/>
+                                <TextBlock Text="{Binding WardName}" Style="{StaticResource ArticleText}" Foreground="White"/>
+                                <TextBlock Text="{Binding DepartmentName}" Style="{StaticResource ArticleText}" Foreground="White"/>
+                            </StackPanel>
+                            <StackPanel Grid.Column="1" Margin="5" Visibility="{Binding VisibilityAppointment}">
+                                <TextBlock Text="Направление врача:" Style="{StaticResource ArticleText}" Foreground="White" FontWeight="Bold"/>
+                                <TextBlock Text="{Binding AppointmentContent}" TextWrapping="Wrap" Style="{StaticResource ArticleText}" Foreground="White"/>
+                            </StackPanel>
+                            <StackPanel Grid.Column="2">
+                                <Image Source="../Assets/Images/info.png" Width="25" Height="25" Margin="5" MouseLeftButtonDown="MoreButton_Click" Cursor="Hand"/>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Border Grid.Row="2" BorderThickness="0 3 0 0" BorderBrush="#38ADDF" x:Name="ButtonsStackPanel">
+            <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right">
+                <StackPanel Orientation="Horizontal" Margin="10 0 10 0" MouseLeftButtonDown="FillListButton_Click" Cursor="Hand">
+                    <Image Source="../Assets/Images/get_spravka.png" Width="50" Height="30"/>
+                    <TextBlock Text="Заполнить темп. лист" VerticalAlignment="Center" Style="{StaticResource MainText}" Foreground="White"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="10 0 10 0" MouseLeftButtonDown="AddDataButton_Click" Cursor="Hand">
+                    <Image Source="../Assets/Images/add.png" Width="25" Height="25" Margin="7"/>
+                    <TextBlock Text="Добавить" VerticalAlignment="Center" Style="{StaticResource MainText}" Foreground="White"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="10 0 10 0" MouseLeftButtonDown="EditDataButton_Click" Cursor="Hand">
+                    <Image Source="../Assets/Images/edit.png" Width="25" Height="25" Margin="3"/>
+                    <TextBlock Text="Редактировать" VerticalAlignment="Center" Style="{StaticResource MainText}" Foreground="White"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="10 0 10 0" MouseLeftButtonDown="DeleteDataButton_Click" Cursor="Hand">
+                    <Image Source="../Assets/Images/delete.png" Width="25" Height="25" Margin="3"/>
+                    <TextBlock Text="Удалить" VerticalAlignment="Center" Style="{StaticResource MainText}" Foreground="White"/>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Page>

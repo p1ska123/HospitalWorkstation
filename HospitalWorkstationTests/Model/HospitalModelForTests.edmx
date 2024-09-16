@@ -1,0 +1,954 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище HospitalBDModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Diagnoses">
+          <Key>
+            <PropertyRef Name="IdDiagnosis" />
+          </Key>
+          <Property Name="IdDiagnosis" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameDiagnosis" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Doctor's Appointment">
+          <Key>
+            <PropertyRef Name="IdAppointment" />
+          </Key>
+          <Property Name="IdAppointment" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="PatientId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="HospitalDepartments">
+          <Key>
+            <PropertyRef Name="IdDepartment" />
+          </Key>
+          <Property Name="IdDepartment" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameDepartment" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="HospitalPatients">
+          <Key>
+            <PropertyRef Name="IdPatient" />
+          </Key>
+          <Property Name="IdPatient" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NamePatient" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SurnamePatient" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PatronymicPatient" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="WardId" Type="int" />
+          <Property Name="RegistrationNumber" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IdDiagnosis" Type="int" Nullable="false" />
+          <Property Name="BirthdayPatient" Type="date" Nullable="false" />
+          <Property Name="ArrivalDate" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="HospitalPosts">
+          <Key>
+            <PropertyRef Name="IdPost" />
+          </Key>
+          <Property Name="IdPost" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NamePost" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="HospitalWards">
+          <Key>
+            <PropertyRef Name="IdWard" />
+          </Key>
+          <Property Name="IdWard" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameWard" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="DepartmentId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="HospitalWorkers">
+          <Key>
+            <PropertyRef Name="IdWorker" />
+          </Key>
+          <Property Name="IdWorker" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameWorker" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SurnameWorker" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PatronymicWorker" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PostId" Type="int" Nullable="false" />
+          <Property Name="BirthdayWorker" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Parameters">
+          <Key>
+            <PropertyRef Name="IdParameter" />
+          </Key>
+          <Property Name="IdParameter" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameParameter" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PatientInfo">
+          <Key>
+            <PropertyRef Name="IdInfo" />
+          </Key>
+          <Property Name="IdInfo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PatientId" Type="int" Nullable="false" />
+          <Property Name="BloodGroup" Type="nvarchar" MaxLength="50" />
+          <Property Name="RhesusType" Type="nvarchar" MaxLength="50" />
+          <Property Name="SideEffect" Type="nvarchar" MaxLength="50" />
+          <Property Name="DrugNameOfSideEffect" Type="nvarchar" MaxLength="50" />
+          <Property Name="Adress" Type="nvarchar" MaxLength="50" />
+          <Property Name="PlaceOfWork_Study" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="IdRole" />
+          </Key>
+          <Property Name="IdRole" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameRole" Type="nvarchar" MaxLength="15" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TemperatureSheet">
+          <Key>
+            <PropertyRef Name="IdRecord" />
+          </Key>
+          <Property Name="IdRecord" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PatientId" Type="int" Nullable="false" />
+          <Property Name="DateStaying" Type="date" Nullable="false" />
+          <Property Name="TimeId" Type="int" Nullable="false" />
+          <Property Name="ParameterId" Type="int" Nullable="false" />
+          <Property Name="Value" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TimeOfDay">
+          <Key>
+            <PropertyRef Name="IdTime" />
+          </Key>
+          <Property Name="IdTime" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameTime" Type="nvarchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Login" />
+          </Key>
+          <Property Name="Login" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="RoleId" Type="int" Nullable="false" />
+          <Property Name="WorkerId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WorkerInWards">
+          <Key>
+            <PropertyRef Name="IdWorkerInWards" />
+          </Key>
+          <Property Name="IdWorkerInWards" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WardId" Type="int" Nullable="false" />
+          <Property Name="WorkerId" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Doctor's Appointment_HospitalPatients">
+          <End Role="HospitalPatients" Type="Self.HospitalPatients" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Doctor's Appointment" Type="Self.Doctor's Appointment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HospitalPatients">
+              <PropertyRef Name="IdPatient" />
+            </Principal>
+            <Dependent Role="Doctor's Appointment">
+              <PropertyRef Name="PatientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HospitalPatients_Diagnoses">
+          <End Role="Diagnoses" Type="Self.Diagnoses" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="HospitalPatients" Type="Self.HospitalPatients" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Diagnoses">
+              <PropertyRef Name="IdDiagnosis" />
+            </Principal>
+            <Dependent Role="HospitalPatients">
+              <PropertyRef Name="IdDiagnosis" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HospitalPatients_HospitalWards">
+          <End Role="HospitalWards" Type="Self.HospitalWards" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="HospitalPatients" Type="Self.HospitalPatients" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HospitalWards">
+              <PropertyRef Name="IdWard" />
+            </Principal>
+            <Dependent Role="HospitalPatients">
+              <PropertyRef Name="WardId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HospitalWards_HospitalDepartments">
+          <End Role="HospitalDepartments" Type="Self.HospitalDepartments" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="HospitalWards" Type="Self.HospitalWards" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HospitalDepartments">
+              <PropertyRef Name="IdDepartment" />
+            </Principal>
+            <Dependent Role="HospitalWards">
+              <PropertyRef Name="DepartmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HospitalWorkers_HospitalPosts">
+          <End Role="HospitalPosts" Type="Self.HospitalPosts" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="HospitalWorkers" Type="Self.HospitalWorkers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HospitalPosts">
+              <PropertyRef Name="IdPost" />
+            </Principal>
+            <Dependent Role="HospitalWorkers">
+              <PropertyRef Name="PostId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PatientInfo_HospitalPatients">
+          <End Role="HospitalPatients" Type="Self.HospitalPatients" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PatientInfo" Type="Self.PatientInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HospitalPatients">
+              <PropertyRef Name="IdPatient" />
+            </Principal>
+            <Dependent Role="PatientInfo">
+              <PropertyRef Name="PatientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TemperatureSheet_HospitalPatients">
+          <End Role="HospitalPatients" Type="Self.HospitalPatients" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TemperatureSheet" Type="Self.TemperatureSheet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HospitalPatients">
+              <PropertyRef Name="IdPatient" />
+            </Principal>
+            <Dependent Role="TemperatureSheet">
+              <PropertyRef Name="PatientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TemperatureSheet_Parameters">
+          <End Role="Parameters" Type="Self.Parameters" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TemperatureSheet" Type="Self.TemperatureSheet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Parameters">
+              <PropertyRef Name="IdParameter" />
+            </Principal>
+            <Dependent Role="TemperatureSheet">
+              <PropertyRef Name="ParameterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TemperatureSheet_TimeOfDay">
+          <End Role="TimeOfDay" Type="Self.TimeOfDay" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TemperatureSheet" Type="Self.TemperatureSheet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TimeOfDay">
+              <PropertyRef Name="IdTime" />
+            </Principal>
+            <Dependent Role="TemperatureSheet">
+              <PropertyRef Name="TimeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_HospitalWorkers">
+          <End Role="HospitalWorkers" Type="Self.HospitalWorkers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HospitalWorkers">
+              <PropertyRef Name="IdWorker" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="WorkerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_Roles">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="IdRole" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WorkerInWards_HospitalWards">
+          <End Role="HospitalWards" Type="Self.HospitalWards" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="WorkerInWards" Type="Self.WorkerInWards" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HospitalWards">
+              <PropertyRef Name="IdWard" />
+            </Principal>
+            <Dependent Role="WorkerInWards">
+              <PropertyRef Name="WardId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WorkerInWards_HospitalWorkers">
+          <End Role="HospitalWorkers" Type="Self.HospitalWorkers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="WorkerInWards" Type="Self.WorkerInWards" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HospitalWorkers">
+              <PropertyRef Name="IdWorker" />
+            </Principal>
+            <Dependent Role="WorkerInWards">
+              <PropertyRef Name="WorkerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище HospitalBDModelContainer">
+          <EntitySet Name="Diagnoses" EntityType="Self.Diagnoses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Doctor's Appointment" EntityType="Self.Doctor's Appointment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HospitalDepartments" EntityType="Self.HospitalDepartments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HospitalPatients" EntityType="Self.HospitalPatients" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HospitalPosts" EntityType="Self.HospitalPosts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HospitalWards" EntityType="Self.HospitalWards" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HospitalWorkers" EntityType="Self.HospitalWorkers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Parameters" EntityType="Self.Parameters" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PatientInfo" EntityType="Self.PatientInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TemperatureSheet" EntityType="Self.TemperatureSheet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TimeOfDay" EntityType="Self.TimeOfDay" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WorkerInWards" EntityType="Self.WorkerInWards" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Doctor's Appointment_HospitalPatients" Association="Self.FK_Doctor's Appointment_HospitalPatients">
+            <End Role="HospitalPatients" EntitySet="HospitalPatients" />
+            <End Role="Doctor's Appointment" EntitySet="Doctor's Appointment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HospitalPatients_Diagnoses" Association="Self.FK_HospitalPatients_Diagnoses">
+            <End Role="Diagnoses" EntitySet="Diagnoses" />
+            <End Role="HospitalPatients" EntitySet="HospitalPatients" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HospitalPatients_HospitalWards" Association="Self.FK_HospitalPatients_HospitalWards">
+            <End Role="HospitalWards" EntitySet="HospitalWards" />
+            <End Role="HospitalPatients" EntitySet="HospitalPatients" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HospitalWards_HospitalDepartments" Association="Self.FK_HospitalWards_HospitalDepartments">
+            <End Role="HospitalDepartments" EntitySet="HospitalDepartments" />
+            <End Role="HospitalWards" EntitySet="HospitalWards" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HospitalWorkers_HospitalPosts" Association="Self.FK_HospitalWorkers_HospitalPosts">
+            <End Role="HospitalPosts" EntitySet="HospitalPosts" />
+            <End Role="HospitalWorkers" EntitySet="HospitalWorkers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PatientInfo_HospitalPatients" Association="Self.FK_PatientInfo_HospitalPatients">
+            <End Role="HospitalPatients" EntitySet="HospitalPatients" />
+            <End Role="PatientInfo" EntitySet="PatientInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TemperatureSheet_HospitalPatients" Association="Self.FK_TemperatureSheet_HospitalPatients">
+            <End Role="HospitalPatients" EntitySet="HospitalPatients" />
+            <End Role="TemperatureSheet" EntitySet="TemperatureSheet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TemperatureSheet_Parameters" Association="Self.FK_TemperatureSheet_Parameters">
+            <End Role="Parameters" EntitySet="Parameters" />
+            <End Role="TemperatureSheet" EntitySet="TemperatureSheet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TemperatureSheet_TimeOfDay" Association="Self.FK_TemperatureSheet_TimeOfDay">
+            <End Role="TimeOfDay" EntitySet="TimeOfDay" />
+            <End Role="TemperatureSheet" EntitySet="TemperatureSheet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_HospitalWorkers" Association="Self.FK_Users_HospitalWorkers">
+            <End Role="HospitalWorkers" EntitySet="HospitalWorkers" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_Roles" Association="Self.FK_Users_Roles">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WorkerInWards_HospitalWards" Association="Self.FK_WorkerInWards_HospitalWards">
+            <End Role="HospitalWards" EntitySet="HospitalWards" />
+            <End Role="WorkerInWards" EntitySet="WorkerInWards" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WorkerInWards_HospitalWorkers" Association="Self.FK_WorkerInWards_HospitalWorkers">
+            <End Role="HospitalWorkers" EntitySet="HospitalWorkers" />
+            <End Role="WorkerInWards" EntitySet="WorkerInWards" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="HospitalBDModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Diagnoses">
+          <Key>
+            <PropertyRef Name="IdDiagnosis" />
+          </Key>
+          <Property Name="IdDiagnosis" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameDiagnosis" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="HospitalPatients" Relationship="Self.FK_HospitalPatients_Diagnoses" FromRole="Diagnoses" ToRole="HospitalPatients" />
+        </EntityType>
+        <EntityType Name="Doctor_s_Appointment">
+          <Key>
+            <PropertyRef Name="IdAppointment" />
+          </Key>
+          <Property Name="IdAppointment" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PatientId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="HospitalPatients" Relationship="Self.FK_Doctor_s_Appointment_HospitalPatients" FromRole="Doctor_s_Appointment" ToRole="HospitalPatients" />
+        </EntityType>
+        <EntityType Name="HospitalDepartments">
+          <Key>
+            <PropertyRef Name="IdDepartment" />
+          </Key>
+          <Property Name="IdDepartment" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameDepartment" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="HospitalWards" Relationship="Self.FK_HospitalWards_HospitalDepartments" FromRole="HospitalDepartments" ToRole="HospitalWards" />
+        </EntityType>
+        <EntityType Name="HospitalPatients">
+          <Key>
+            <PropertyRef Name="IdPatient" />
+          </Key>
+          <Property Name="IdPatient" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NamePatient" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SurnamePatient" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PatronymicPatient" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="WardId" Type="Int32" />
+          <Property Name="RegistrationNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IdDiagnosis" Type="Int32" Nullable="false" />
+          <Property Name="BirthdayPatient" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ArrivalDate" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Diagnoses" Relationship="Self.FK_HospitalPatients_Diagnoses" FromRole="HospitalPatients" ToRole="Diagnoses" />
+          <NavigationProperty Name="Doctor_s_Appointment" Relationship="Self.FK_Doctor_s_Appointment_HospitalPatients" FromRole="HospitalPatients" ToRole="Doctor_s_Appointment" />
+          <NavigationProperty Name="HospitalWards" Relationship="Self.FK_HospitalPatients_HospitalWards" FromRole="HospitalPatients" ToRole="HospitalWards" />
+          <NavigationProperty Name="PatientInfo" Relationship="Self.FK_PatientInfo_HospitalPatients" FromRole="HospitalPatients" ToRole="PatientInfo" />
+          <NavigationProperty Name="TemperatureSheet" Relationship="Self.FK_TemperatureSheet_HospitalPatients" FromRole="HospitalPatients" ToRole="TemperatureSheet" />
+        </EntityType>
+        <EntityType Name="HospitalPosts">
+          <Key>
+            <PropertyRef Name="IdPost" />
+          </Key>
+          <Property Name="IdPost" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NamePost" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="HospitalWorkers" Relationship="Self.FK_HospitalWorkers_HospitalPosts" FromRole="HospitalPosts" ToRole="HospitalWorkers" />
+        </EntityType>
+        <EntityType Name="HospitalWards">
+          <Key>
+            <PropertyRef Name="IdWard" />
+          </Key>
+          <Property Name="IdWard" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameWard" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DepartmentId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="HospitalDepartments" Relationship="Self.FK_HospitalWards_HospitalDepartments" FromRole="HospitalWards" ToRole="HospitalDepartments" />
+          <NavigationProperty Name="HospitalPatients" Relationship="Self.FK_HospitalPatients_HospitalWards" FromRole="HospitalWards" ToRole="HospitalPatients" />
+          <NavigationProperty Name="WorkerInWards" Relationship="Self.FK_WorkerInWards_HospitalWards" FromRole="HospitalWards" ToRole="WorkerInWards" />
+        </EntityType>
+        <EntityType Name="HospitalWorkers">
+          <Key>
+            <PropertyRef Name="IdWorker" />
+          </Key>
+          <Property Name="IdWorker" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameWorker" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SurnameWorker" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PatronymicWorker" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PostId" Type="Int32" Nullable="false" />
+          <Property Name="BirthdayWorker" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="HospitalPosts" Relationship="Self.FK_HospitalWorkers_HospitalPosts" FromRole="HospitalWorkers" ToRole="HospitalPosts" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_Users_HospitalWorkers" FromRole="HospitalWorkers" ToRole="Users" />
+          <NavigationProperty Name="WorkerInWards" Relationship="Self.FK_WorkerInWards_HospitalWorkers" FromRole="HospitalWorkers" ToRole="WorkerInWards" />
+        </EntityType>
+        <EntityType Name="Parameters">
+          <Key>
+            <PropertyRef Name="IdParameter" />
+          </Key>
+          <Property Name="IdParameter" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameParameter" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="TemperatureSheet" Relationship="Self.FK_TemperatureSheet_Parameters" FromRole="Parameters" ToRole="TemperatureSheet" />
+        </EntityType>
+        <EntityType Name="PatientInfo">
+          <Key>
+            <PropertyRef Name="IdInfo" />
+          </Key>
+          <Property Name="IdInfo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PatientId" Type="Int32" Nullable="false" />
+          <Property Name="BloodGroup" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RhesusType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SideEffect" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DrugNameOfSideEffect" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Adress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PlaceOfWork_Study" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="HospitalPatients" Relationship="Self.FK_PatientInfo_HospitalPatients" FromRole="PatientInfo" ToRole="HospitalPatients" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="IdRole" />
+          </Key>
+          <Property Name="IdRole" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameRole" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_Users_Roles" FromRole="Roles" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="TemperatureSheet">
+          <Key>
+            <PropertyRef Name="IdRecord" />
+          </Key>
+          <Property Name="IdRecord" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PatientId" Type="Int32" Nullable="false" />
+          <Property Name="DateStaying" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="TimeId" Type="Int32" Nullable="false" />
+          <Property Name="ParameterId" Type="Int32" Nullable="false" />
+          <Property Name="Value" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="HospitalPatients" Relationship="Self.FK_TemperatureSheet_HospitalPatients" FromRole="TemperatureSheet" ToRole="HospitalPatients" />
+          <NavigationProperty Name="Parameters" Relationship="Self.FK_TemperatureSheet_Parameters" FromRole="TemperatureSheet" ToRole="Parameters" />
+          <NavigationProperty Name="TimeOfDay" Relationship="Self.FK_TemperatureSheet_TimeOfDay" FromRole="TemperatureSheet" ToRole="TimeOfDay" />
+        </EntityType>
+        <EntityType Name="TimeOfDay">
+          <Key>
+            <PropertyRef Name="IdTime" />
+          </Key>
+          <Property Name="IdTime" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameTime" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="TemperatureSheet" Relationship="Self.FK_TemperatureSheet_TimeOfDay" FromRole="TimeOfDay" ToRole="TemperatureSheet" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Login" />
+          </Key>
+          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RoleId" Type="Int32" Nullable="false" />
+          <Property Name="WorkerId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="HospitalWorkers" Relationship="Self.FK_Users_HospitalWorkers" FromRole="Users" ToRole="HospitalWorkers" />
+          <NavigationProperty Name="Roles" Relationship="Self.FK_Users_Roles" FromRole="Users" ToRole="Roles" />
+        </EntityType>
+        <EntityType Name="WorkerInWards">
+          <Key>
+            <PropertyRef Name="IdWorkerInWards" />
+          </Key>
+          <Property Name="IdWorkerInWards" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WardId" Type="Int32" Nullable="false" />
+          <Property Name="WorkerId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="HospitalWards" Relationship="Self.FK_WorkerInWards_HospitalWards" FromRole="WorkerInWards" ToRole="HospitalWards" />
+          <NavigationProperty Name="HospitalWorkers" Relationship="Self.FK_WorkerInWards_HospitalWorkers" FromRole="WorkerInWards" ToRole="HospitalWorkers" />
+        </EntityType>
+        <Association Name="FK_HospitalPatients_Diagnoses">
+          <End Role="Diagnoses" Type="Self.Diagnoses" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="HospitalPatients" Type="Self.HospitalPatients" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Diagnoses">
+              <PropertyRef Name="IdDiagnosis" />
+            </Principal>
+            <Dependent Role="HospitalPatients">
+              <PropertyRef Name="IdDiagnosis" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Doctor_s_Appointment_HospitalPatients">
+          <End Role="HospitalPatients" Type="Self.HospitalPatients" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Doctor_s_Appointment" Type="Self.Doctor_s_Appointment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HospitalPatients">
+              <PropertyRef Name="IdPatient" />
+            </Principal>
+            <Dependent Role="Doctor_s_Appointment">
+              <PropertyRef Name="PatientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HospitalWards_HospitalDepartments">
+          <End Role="HospitalDepartments" Type="Self.HospitalDepartments" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="HospitalWards" Type="Self.HospitalWards" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HospitalDepartments">
+              <PropertyRef Name="IdDepartment" />
+            </Principal>
+            <Dependent Role="HospitalWards">
+              <PropertyRef Name="DepartmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HospitalPatients_HospitalWards">
+          <End Role="HospitalWards" Type="Self.HospitalWards" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="HospitalPatients" Type="Self.HospitalPatients" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HospitalWards">
+              <PropertyRef Name="IdWard" />
+            </Principal>
+            <Dependent Role="HospitalPatients">
+              <PropertyRef Name="WardId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PatientInfo_HospitalPatients">
+          <End Role="HospitalPatients" Type="Self.HospitalPatients" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PatientInfo" Type="Self.PatientInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HospitalPatients">
+              <PropertyRef Name="IdPatient" />
+            </Principal>
+            <Dependent Role="PatientInfo">
+              <PropertyRef Name="PatientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TemperatureSheet_HospitalPatients">
+          <End Role="HospitalPatients" Type="Self.HospitalPatients" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TemperatureSheet" Type="Self.TemperatureSheet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HospitalPatients">
+              <PropertyRef Name="IdPatient" />
+            </Principal>
+            <Dependent Role="TemperatureSheet">
+              <PropertyRef Name="PatientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HospitalWorkers_HospitalPosts">
+          <End Role="HospitalPosts" Type="Self.HospitalPosts" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="HospitalWorkers" Type="Self.HospitalWorkers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HospitalPosts">
+              <PropertyRef Name="IdPost" />
+            </Principal>
+            <Dependent Role="HospitalWorkers">
+              <PropertyRef Name="PostId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WorkerInWards_HospitalWards">
+          <End Role="HospitalWards" Type="Self.HospitalWards" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="WorkerInWards" Type="Self.WorkerInWards" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HospitalWards">
+              <PropertyRef Name="IdWard" />
+            </Principal>
+            <Dependent Role="WorkerInWards">
+              <PropertyRef Name="WardId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_HospitalWorkers">
+          <End Role="HospitalWorkers" Type="Self.HospitalWorkers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HospitalWorkers">
+              <PropertyRef Name="IdWorker" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="WorkerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WorkerInWards_HospitalWorkers">
+          <End Role="HospitalWorkers" Type="Self.HospitalWorkers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="WorkerInWards" Type="Self.WorkerInWards" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HospitalWorkers">
+              <PropertyRef Name="IdWorker" />
+            </Principal>
+            <Dependent Role="WorkerInWards">
+              <PropertyRef Name="WorkerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TemperatureSheet_Parameters">
+          <End Role="Parameters" Type="Self.Parameters" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TemperatureSheet" Type="Self.TemperatureSheet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Parameters">
+              <PropertyRef Name="IdParameter" />
+            </Principal>
+            <Dependent Role="TemperatureSheet">
+              <PropertyRef Name="ParameterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_Roles">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="IdRole" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TemperatureSheet_TimeOfDay">
+          <End Role="TimeOfDay" Type="Self.TimeOfDay" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TemperatureSheet" Type="Self.TemperatureSheet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TimeOfDay">
+              <PropertyRef Name="IdTime" />
+            </Principal>
+            <Dependent Role="TemperatureSheet">
+              <PropertyRef Name="TimeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HospitalBDEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Diagnoses" EntityType="Self.Diagnoses" />
+          <EntitySet Name="Doctor_s_Appointment" EntityType="Self.Doctor_s_Appointment" />
+          <EntitySet Name="HospitalDepartments" EntityType="Self.HospitalDepartments" />
+          <EntitySet Name="HospitalPatients" EntityType="Self.HospitalPatients" />
+          <EntitySet Name="HospitalPosts" EntityType="Self.HospitalPosts" />
+          <EntitySet Name="HospitalWards" EntityType="Self.HospitalWards" />
+          <EntitySet Name="HospitalWorkers" EntityType="Self.HospitalWorkers" />
+          <EntitySet Name="Parameters" EntityType="Self.Parameters" />
+          <EntitySet Name="PatientInfo" EntityType="Self.PatientInfo" />
+          <EntitySet Name="Roles" EntityType="Self.Roles" />
+          <EntitySet Name="TemperatureSheet" EntityType="Self.TemperatureSheet" />
+          <EntitySet Name="TimeOfDay" EntityType="Self.TimeOfDay" />
+          <EntitySet Name="Users" EntityType="Self.Users" />
+          <EntitySet Name="WorkerInWards" EntityType="Self.WorkerInWards" />
+          <AssociationSet Name="FK_HospitalPatients_Diagnoses" Association="Self.FK_HospitalPatients_Diagnoses">
+            <End Role="Diagnoses" EntitySet="Diagnoses" />
+            <End Role="HospitalPatients" EntitySet="HospitalPatients" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Doctor_s_Appointment_HospitalPatients" Association="Self.FK_Doctor_s_Appointment_HospitalPatients">
+            <End Role="HospitalPatients" EntitySet="HospitalPatients" />
+            <End Role="Doctor_s_Appointment" EntitySet="Doctor_s_Appointment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HospitalWards_HospitalDepartments" Association="Self.FK_HospitalWards_HospitalDepartments">
+            <End Role="HospitalDepartments" EntitySet="HospitalDepartments" />
+            <End Role="HospitalWards" EntitySet="HospitalWards" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HospitalPatients_HospitalWards" Association="Self.FK_HospitalPatients_HospitalWards">
+            <End Role="HospitalWards" EntitySet="HospitalWards" />
+            <End Role="HospitalPatients" EntitySet="HospitalPatients" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PatientInfo_HospitalPatients" Association="Self.FK_PatientInfo_HospitalPatients">
+            <End Role="HospitalPatients" EntitySet="HospitalPatients" />
+            <End Role="PatientInfo" EntitySet="PatientInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TemperatureSheet_HospitalPatients" Association="Self.FK_TemperatureSheet_HospitalPatients">
+            <End Role="HospitalPatients" EntitySet="HospitalPatients" />
+            <End Role="TemperatureSheet" EntitySet="TemperatureSheet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HospitalWorkers_HospitalPosts" Association="Self.FK_HospitalWorkers_HospitalPosts">
+            <End Role="HospitalPosts" EntitySet="HospitalPosts" />
+            <End Role="HospitalWorkers" EntitySet="HospitalWorkers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WorkerInWards_HospitalWards" Association="Self.FK_WorkerInWards_HospitalWards">
+            <End Role="HospitalWards" EntitySet="HospitalWards" />
+            <End Role="WorkerInWards" EntitySet="WorkerInWards" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_HospitalWorkers" Association="Self.FK_Users_HospitalWorkers">
+            <End Role="HospitalWorkers" EntitySet="HospitalWorkers" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WorkerInWards_HospitalWorkers" Association="Self.FK_WorkerInWards_HospitalWorkers">
+            <End Role="HospitalWorkers" EntitySet="HospitalWorkers" />
+            <End Role="WorkerInWards" EntitySet="WorkerInWards" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TemperatureSheet_Parameters" Association="Self.FK_TemperatureSheet_Parameters">
+            <End Role="Parameters" EntitySet="Parameters" />
+            <End Role="TemperatureSheet" EntitySet="TemperatureSheet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_Roles" Association="Self.FK_Users_Roles">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TemperatureSheet_TimeOfDay" Association="Self.FK_TemperatureSheet_TimeOfDay">
+            <End Role="TimeOfDay" EntitySet="TimeOfDay" />
+            <End Role="TemperatureSheet" EntitySet="TemperatureSheet" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище HospitalBDModelContainer" CdmEntityContainer="HospitalBDEntities">
+          <EntitySetMapping Name="Diagnoses">
+            <EntityTypeMapping TypeName="HospitalBDModel.Diagnoses">
+              <MappingFragment StoreEntitySet="Diagnoses">
+                <ScalarProperty Name="IdDiagnosis" ColumnName="IdDiagnosis" />
+                <ScalarProperty Name="NameDiagnosis" ColumnName="NameDiagnosis" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Doctor_s_Appointment">
+            <EntityTypeMapping TypeName="HospitalBDModel.Doctor_s_Appointment">
+              <MappingFragment StoreEntitySet="Doctor's Appointment">
+                <ScalarProperty Name="IdAppointment" ColumnName="IdAppointment" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="PatientId" ColumnName="PatientId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HospitalDepartments">
+            <EntityTypeMapping TypeName="HospitalBDModel.HospitalDepartments">
+              <MappingFragment StoreEntitySet="HospitalDepartments">
+                <ScalarProperty Name="IdDepartment" ColumnName="IdDepartment" />
+                <ScalarProperty Name="NameDepartment" ColumnName="NameDepartment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HospitalPatients">
+            <EntityTypeMapping TypeName="HospitalBDModel.HospitalPatients">
+              <MappingFragment StoreEntitySet="HospitalPatients">
+                <ScalarProperty Name="IdPatient" ColumnName="IdPatient" />
+                <ScalarProperty Name="NamePatient" ColumnName="NamePatient" />
+                <ScalarProperty Name="SurnamePatient" ColumnName="SurnamePatient" />
+                <ScalarProperty Name="PatronymicPatient" ColumnName="PatronymicPatient" />
+                <ScalarProperty Name="WardId" ColumnName="WardId" />
+                <ScalarProperty Name="RegistrationNumber" ColumnName="RegistrationNumber" />
+                <ScalarProperty Name="IdDiagnosis" ColumnName="IdDiagnosis" />
+                <ScalarProperty Name="BirthdayPatient" ColumnName="BirthdayPatient" />
+                <ScalarProperty Name="ArrivalDate" ColumnName="ArrivalDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HospitalPosts">
+            <EntityTypeMapping TypeName="HospitalBDModel.HospitalPosts">
+              <MappingFragment StoreEntitySet="HospitalPosts">
+                <ScalarProperty Name="IdPost" ColumnName="IdPost" />
+                <ScalarProperty Name="NamePost" ColumnName="NamePost" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HospitalWards">
+            <EntityTypeMapping TypeName="HospitalBDModel.HospitalWards">
+              <MappingFragment StoreEntitySet="HospitalWards">
+                <ScalarProperty Name="IdWard" ColumnName="IdWard" />
+                <ScalarProperty Name="NameWard" ColumnName="NameWard" />
+                <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HospitalWorkers">
+            <EntityTypeMapping TypeName="HospitalBDModel.HospitalWorkers">
+              <MappingFragment StoreEntitySet="HospitalWorkers">
+                <ScalarProperty Name="IdWorker" ColumnName="IdWorker" />
+                <ScalarProperty Name="NameWorker" ColumnName="NameWorker" />
+                <ScalarProperty Name="SurnameWorker" ColumnName="SurnameWorker" />
+                <ScalarProperty Name="PatronymicWorker" ColumnName="PatronymicWorker" />
+                <ScalarProperty Name="PostId" ColumnName="PostId" />
+                <ScalarProperty Name="BirthdayWorker" ColumnName="BirthdayWorker" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Parameters">
+            <EntityTypeMapping TypeName="HospitalBDModel.Parameters">
+              <MappingFragment StoreEntitySet="Parameters">
+                <ScalarProperty Name="IdParameter" ColumnName="IdParameter" />
+                <ScalarProperty Name="NameParameter" ColumnName="NameParameter" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PatientInfo">
+            <EntityTypeMapping TypeName="HospitalBDModel.PatientInfo">
+              <MappingFragment StoreEntitySet="PatientInfo">
+                <ScalarProperty Name="IdInfo" ColumnName="IdInfo" />
+                <ScalarProperty Name="PatientId" ColumnName="PatientId" />
+                <ScalarProperty Name="BloodGroup" ColumnName="BloodGroup" />
+                <ScalarProperty Name="RhesusType" ColumnName="RhesusType" />
+                <ScalarProperty Name="SideEffect" ColumnName="SideEffect" />
+                <ScalarProperty Name="DrugNameOfSideEffect" ColumnName="DrugNameOfSideEffect" />
+                <ScalarProperty Name="Adress" ColumnName="Adress" />
+                <ScalarProperty Name="PlaceOfWork_Study" ColumnName="PlaceOfWork_Study" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="HospitalBDModel.Roles">
+              <MappingFragment StoreEntitySet="Roles">
+                <ScalarProperty Name="IdRole" ColumnName="IdRole" />
+                <ScalarProperty Name="NameRole" ColumnName="NameRole" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TemperatureSheet">
+            <EntityTypeMapping TypeName="HospitalBDModel.TemperatureSheet">
+              <MappingFragment StoreEntitySet="TemperatureSheet">
+                <ScalarProperty Name="IdRecord" ColumnName="IdRecord" />
+                <ScalarProperty Name="PatientId" ColumnName="PatientId" />
+                <ScalarProperty Name="DateStaying" ColumnName="DateStaying" />
+                <ScalarProperty Name="TimeId" ColumnName="TimeId" />
+                <ScalarProperty Name="ParameterId" ColumnName="ParameterId" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TimeOfDay">
+            <EntityTypeMapping TypeName="HospitalBDModel.TimeOfDay">
+              <MappingFragment StoreEntitySet="TimeOfDay">
+                <ScalarProperty Name="IdTime" ColumnName="IdTime" />
+                <ScalarProperty Name="NameTime" ColumnName="NameTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="HospitalBDModel.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="WorkerId" ColumnName="WorkerId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WorkerInWards">
+            <EntityTypeMapping TypeName="HospitalBDModel.WorkerInWards">
+              <MappingFragment StoreEntitySet="WorkerInWards">
+                <ScalarProperty Name="IdWorkerInWards" ColumnName="IdWorkerInWards" />
+                <ScalarProperty Name="WardId" ColumnName="WardId" />
+                <ScalarProperty Name="WorkerId" ColumnName="WorkerId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
